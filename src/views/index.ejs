@@ -1,0 +1,105 @@
+<%- include ('partials/header.html') %>
+
+
+    <div class="header_tabla">
+        <h1>Ventas</h1>
+        <form class="list_form" action="/filter" method="GET">
+            <h3 class="list_form__h3">Mes</h3>
+            <select name="ventas_messelect" id="ventas_messelect" class="select" onchange="this.form.submit()">
+                <% for(let i=0; i<=12; i++){ %>
+                    <% if (datos.values[i]==datos.mes_selected){ %>
+                        <option value="<%= datos.values[i] %>" selected>
+                            <%= datos.meses[i] %>
+                        </option>
+                        <%} else if (datos.values[i] !=datos.mes_selected){ %>
+                            <option value="<%= datos.values[i] %>">
+                                <%= datos.meses[i] %>
+                            </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                        <h3 class="list_form__h3">Año</h3>
+                        <select name="ventas_anioselect" id="ventas_anioselect" class="select" onchange="this.form.submit()">
+                            <% for(let i=0; i<7; i++){ %>
+                                <% if (datos.aniosvalues[i]==datos.anio_selected){ %>
+                                    <option value="<%= datos.aniosvalues[i] %>" selected>
+                                        <%= datos.anios[i] %>
+                                    </option>
+                                    <%} else if (datos.aniosvalues[i] !=datos.anio_selected){ %>
+                                        <option value="<%= datos.aniosvalues[i] %>">
+                                            <%= datos.anios[i] %>
+                                        </option>
+                                        <% } %>
+                                        <% } %>
+                                        
+                        </select>                
+                                    </form>
+                                </div>
+                                
+                                <div class="container_tabla">
+                                <table class="tabla_ventas">
+                                    <thead>
+                                        <th>Producto</th>
+                                        <th>Fecha</th>
+                                        <th>Total</th>
+                                        <th>Descripción</th>
+                                        <th>
+                                            
+                                        </th>
+                                    </thead>
+                                    <tbody>
+
+                <% datos.venta.forEach(vent=> { %>
+
+                    <tr class="filas">
+                        <form action="/edit/<%= vent._id %>?collection=venta" method="POST">
+                            <td class="td_ventas"><input class="input_tabla" title="<%= vent.producto %>"
+                                    name="producto" type="text" disabled required value="<%= vent.producto %>"></td>
+                            <td class="td_ventas"><input class="input_tabla" name="fecha" type="date" disabled required
+                                    value="<%= datos.fechas_formateadas[datos.venta.indexOf(vent)] %>"></td>
+                            <td class="td_ventas"><input class="input_tabla" title="<%= vent.total %>" name="total"
+                                    type="text" disabled required value="<%= vent.total %>"></td>
+                            <td class="td_ventas"><input class="input_tabla" title="<%= vent.descripcion%>"
+                                    name="descripcion" type="text" disabled required value="<%= vent.descripcion %>"></td>
+                            <td class="td_ventas">
+                                <div class="operaciones_btn_div">
+                                    <button type="submit" class="editar operaciones_btn btn_grey">Editar</button>
+                                    <a href="/delete/<%= vent._id %>?collection=venta" id="borrar_venta_btn"
+                                        class="operaciones_btn btn_red">Borrar</a>
+                                </div>
+                            </td>
+                        </form>
+                    </tr>
+
+                    <% }) %>
+                        <tr>
+                            <td class="td_ventas"></td>
+                            <td class="td_ventas"></td>
+                            <td class="td_ventas"><strong>$ <%= datos.total %></strong></td>
+                            <td class="td_ventas"></td>
+                            <td class="td_ventas"></td>
+                        </tr>
+                        <tr>
+                            <form action="/nueva?collection=venta" method="POST">
+                                <td class="td_ventas"><input id="producto" class="input_nueva_venta" required name="producto"
+                                        type="text" disabled></td>
+                                <td class="td_ventas"><input id="fecha" class="input_nueva_venta" required name="fecha"
+                                        type="date" disabled></td>
+                                <td class="td_ventas"><input id="total" class="input_nueva_venta" required name="total"
+                                        type="number" disabled></td>
+                                <td class="td_ventas"><input id="descripcion" class="input_nueva_venta" required
+                                        name="descripcion" type="text" disabled></td>
+                                <td class="td_ventas">
+                                    <button type="submit" id="nueva_venta_btn" class="nueva_venta_btn">Nueva</button>
+                                </td>
+                            </form>
+                        </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

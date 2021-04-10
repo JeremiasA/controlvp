@@ -1,0 +1,100 @@
+<%- include ('partials/header.html') %>
+<body>
+  
+    <div class="header_tabla">
+        <h1>Pedidos</h1>
+        <form class="list_form" action="/filter" method="GET">
+            <h3 class="list_form__h3">Mes</h3>
+            <select name="pedidos_messelect" id="ventas_messelect" class="select" onchange="this.form.submit()">
+                <% for(let i=0; i<=12; i++){ %>
+                    <% if (datos.values[i]==datos.mes_selected){ %>
+                        <option value="<%= datos.values[i] %>" selected>
+                            <%= datos.meses[i] %>
+                        </option>
+                        <%} else if (datos.values[i] !=datos.mes_selected){ %>
+                            <option value="<%= datos.values[i] %>">
+                                <%= datos.meses[i] %>
+                            </option>
+                            <% } %>
+                            <% } %>
+                        </select>
+                        <h3 class="list_form__h3">Año</h3>
+                        <select name="pedidos_anioselect" id="ventas_anioselect" class="select" onchange="this.form.submit()">
+                            <% for(let i=0; i<7; i++){ %>
+                                <% if (datos.aniosvalues[i]==datos.anio_selected){ %>
+                                    <option value="<%= datos.aniosvalues[i] %>" selected>
+                                        <%= datos.anios[i] %>
+                                    </option>
+                                    <%} else if (datos.aniosvalues[i] !=datos.anio_selected){ %>
+                                        <option value="<%= datos.aniosvalues[i] %>">
+                                            <%= datos.anios[i] %>
+                                        </option>
+                                        <% } %>
+                                        <% } %>
+                                        
+                                    </select>                
+                                </form>
+                            </div>
+                            <div class="container_tabla_pedidos">
+                            <table class="tabla_pedidos">
+                                <thead>
+                                    <th>Producto</th>
+                                    <th>Fecha</th>
+                                    <th>Envío</th>
+                                    <th>Total</th>
+                                    <th>Entrega</th>
+                                    <th>Estado</th>
+                                    <th></th>
+                                </thead>
+                                <tbody>
+                                    
+                     <% datos.pedido.forEach(pedid => { %>
+                    <tr class="filas">
+                        <form action="/edit/<%= pedid._id %>?collection=pedido"  method="POST">
+                            <td class="td_pedidos"><input class="input_tabla" required title="<%= pedid.producto %>" name="producto" type="text"
+                                    disabled value="<%= pedid.producto %>"></td>
+                            <td class="td_pedidos"><input class="input_tabla" required name="fecha" type="date" disabled
+                                    value="<%= datos.fechas_formateadas_pedidos[datos.pedido.indexOf(pedid)] %>"></td>
+                            <td class="td_pedidos"><input class="input_tabla" required title="<%= pedid.envio %>" name="envio" type="text" disabled
+                                    value="<%= pedid.envio %>"></td>
+                            <td class="td_pedidos"><input class="input_tabla" required title="<%= pedid.total %>" name="total" type="text" disabled
+                                    value="<%= pedid.total %>"></td>
+                            <td class="td_pedidos"><input class="input_tabla" required title="<%= pedid.entrega %>" name="entrega" type="text"
+                                    disabled value="<%= pedid.entrega %>"></td>
+                            <td class="td_pedidos"><input class="input_tabla" required title="<%= pedid.estado %>" name="estado" type="text" disabled
+                                    value="<%= pedid.estado %>"></td>
+                    
+                            <td class="td_pedidos">
+                            <div class="operaciones_btn_div">
+                                    <input type="hidden" name="id" value="<%= pedid._id %>">
+                                    <button type="submit" title="Editar" class="editar_pedido operaciones_btn_pedidos btn_grey">...</button>
+                                    <a href="/delete/<%= pedid._id %>?collection=pedido" title="Borrar pedido" class="operaciones_btn_pedidos btn_red">X</a>
+                                    <button  type="submit" title="Marcar como entregado" class="operaciones_btn_pedidos btn_green entregada_btn">$</button>
+                            </div>
+                            </td>
+                        </form>
+                    </tr>
+
+                <% }) %>
+
+            <tr>
+                <form action="/nueva?collection=pedido" method="POST">
+                <td class="td_pedidos"><input id="producto" class="input_nueva_pedido" required name="producto" type="text" disabled></td>
+                <td class="td_pedidos"><input id="fecha" class="input_nueva_pedido" required name="fecha" type="date" disabled></td>
+                <td class="td_pedidos"><input id="envio" class="input_nueva_pedido" required name="envio" type="number" disabled></td>
+                <td class="td_pedidos"><input id="total" class="input_nueva_pedido"required  name="total" type="number" disabled></td>
+                <td class="td_pedidos"><input id="entrega" class="input_nueva_pedido" required name="entrega" type="text" disabled></td>
+                <td class="td_pedidos"><input id="estado" class="input_nueva_pedido"required  name="estado" type="text" disabled></td>
+                <td class="td_pedidos">
+                    <button type="submit" id ="nueva_pedido_btn" class="nueva_venta_btn">Nueva</button>
+                </td>
+            </form> 
+            </tr>   
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="scripts_pedidos.js"></script>
+</body>
+</html>

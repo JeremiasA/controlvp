@@ -1,0 +1,221 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    box-sizing: border-box;
+}
+
+.header{
+    background-color: orange;
+    height:5vh;
+    width:100%;
+    margin-bottom: 2vh;
+}
+.header button{
+    height:3vh;
+    margin: 1vh;
+    width:5vw;
+    border-radius: .3rem;
+    color:white;
+    font-size: 1rem;
+    box-shadow: 2px 2px 3px black;
+    outline:none;
+}
+
+.header button:hover{
+    cursor:pointer;
+}
+.header button:active{
+    transform: scale(.9);
+    box-shadow: 2px 2px 3px black;
+    cursor:pointer;
+}
+
+.boton_ventas{
+    background-color: rgb(57, 194, 148);
+    min-width: 100px;
+}
+.boton_pedidos{
+    background-color: rgb(127, 140, 255);
+    min-width: 100px;
+}
+
+
+.header_tabla, .header_pedidos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(57, 194, 148);
+    color: beige;
+    height: 3rem;
+    padding: 0  1rem;
+    width:50%;
+    min-width: 700px;
+}
+
+.header_pedidos{
+    background-color: rgb(127, 140, 255);
+}
+.header_tabla h1, .header_pedidos h1{
+    line-height: 3rem;
+    width:50%;
+}
+
+
+.container{
+    display: flex;
+    
+}
+
+.list_form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:40%;
+}   
+
+.list_form__h3{
+    font-size: 1.5rem;
+    margin: 0 .5rem; 
+}
+
+
+.header_tabla .select{
+    width:100%;
+    height:2rem;
+    font-size: 1rem;
+    margin:0 .3rem;
+}
+
+
+.container_tabla, .container_tabla_pedidos{
+    min-width: 700px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height:90vh;
+    overflow-x: scroll;
+    width:51vw;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.tabla_ventas, .tabla_pedidos, .td_ventas, .td_pedidos{
+    text-align: center;
+    width: 100%;
+    font-size: 1.2rem;
+    border:none;
+    outline:none;
+    border-spacing: 5px 10px;
+}
+
+.tabla_pedidos{
+    background-color: rgba(137, 138, 219, 0.192);
+}
+
+.tabla_ventas{
+    background-color: rgba(137, 219, 190, 0.192);
+}
+.td_ventas{
+    width:10vw;
+}
+
+.td_pedidos{
+    width:8.33vw;
+}
+
+.input_tabla{
+    width:calc(100% - 5px);
+    height: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    border:none;
+    outline: none;
+}
+.input_tabla:focus{
+    outline:1px solid green;
+    background-color: rgb(177, 231, 116);
+}
+
+.filas{
+    background-color: rgb(233, 228, 164);
+    margin:0;
+    height:2rem;
+}
+
+.filas:hover{
+    background-color: lightblue;
+}
+
+.nueva_venta_btn{
+    width:7rem;
+    height:1.8rem;
+    border:none;
+    border-radius: .2rem;
+    background-color: rgb(29, 170, 123);
+    box-shadow: 1px 1px 3px black;
+    cursor:pointer;
+    font-size: 1.2rem;
+    color:white;
+    line-height: 1.2rem;
+}
+
+.operaciones_btn_pedidos{
+    width:2rem;
+    height:1.5rem;
+    border:none;
+    border-radius: .2rem;
+    box-shadow: 1px 1px 3px black;
+    cursor:pointer;
+    font-size: 1.2rem;
+    color:white;
+    line-height: 1.2rem;
+    margin:.2rem
+}
+.operaciones_btn{
+    width:5rem;
+    height:1.5rem;
+    border:none;
+    border-radius: .2rem;
+    box-shadow: 1px 1px 3px black;
+    cursor:pointer;
+    font-size: 1.2rem;
+    color:white;
+    line-height: 1.2rem;
+    margin:.2rem
+}
+
+.btn_red{
+    background-color: red;
+}
+.btn_grey{
+    background-color: rgb(104, 104, 104);
+}
+.btn_green{
+    background-color: rgb(7, 126, 53);
+}
+
+.input_nueva_venta, .input_nueva_pedido{
+    width:calc(100% - 5px);
+    height: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.operaciones_btn_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.operaciones_btn_div a{
+    line-height: 1.5rem;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
