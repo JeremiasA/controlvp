@@ -59,7 +59,7 @@
                                     value="<%= datos.fechas_formateadas[datos.venta.indexOf(vent)] %>"></td>
                             <td class="td_ventas"><input class="input_tabla" title="<%= vent.total %>" name="total"
                                     type="text" disabled required value="<%= vent.total %>"></td>
-                            <td class="td_ventas"><input class="input_tabla" title="<%= vent.descripcion%>"
+                            <td class="td_ventas"><input class="input_tabla descripcion" title="<%= vent.descripcion%>"
                                     name="descripcion" type="text" disabled required value="<%= vent.descripcion %>"></td>
                             <td class="td_ventas">
                                 <div class="operaciones_btn_div">
@@ -87,7 +87,7 @@
                                         type="date" disabled></td>
                                 <td class="td_ventas"><input id="total" class="input_nueva_venta" required name="total"
                                         type="number" disabled></td>
-                                <td class="td_ventas"><input id="descripcion" class="input_nueva_venta" required
+                                <td class="td_ventas"><input id="descripcion" class="input_nueva_venta descripcion" required
                                         name="descripcion" type="text" disabled></td>
                                 <td class="td_ventas">
                                     <button type="submit" id="nueva_venta_btn" class="nueva_venta_btn">Nueva</button>
